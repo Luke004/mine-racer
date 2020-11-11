@@ -1,18 +1,5 @@
-# CarSimulator
-A Top Down 2D Car Simulator For Unity
+# Mine Racer
 
-![Screenshot](http://i.imgur.com/m2yvTgK.jpg)
+A Top Down 2D Car Game made with Unity.
 
-Try the demo: 
-
-http://www.jgallant.com/CarSim/
-
-
-Article that details all of the physics involved:
-
-http://www.asawicki.info/Mirror/Car%20Physics%20for%20Games/Car%20Physics%20for%20Games.html
-
-
-Source code references:
-
-https://github.com/spacejack/carphysics2d
+TODO: Extend
