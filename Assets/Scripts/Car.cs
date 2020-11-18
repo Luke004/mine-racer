@@ -8,6 +8,9 @@ public class Car : MonoBehaviour
     bool IsPlayerControlled = false;
 
     [SerializeField]
+    GameObject bodyImage;
+
+    [SerializeField]
     [Range(0f, 1f)]
     float CGHeight = 0.55f;
 
@@ -128,8 +131,15 @@ public class Car : MonoBehaviour
     private static readonly int ITEM_MINE = 1, ITEM_SPEED_BOOST = 2, ITEM_NORMAL_SHOT = 3, ITEM_FREEZE_SHOT = 4;
     private static readonly int ITEM_SIZE = 4;
 
-    void Awake()
+    private static Sprite[] carSprites;
+
+        void Awake()
     {
+        print("awake");
+        if(carSprites == null)
+        {
+            carSprites = Resources.LoadAll<Sprite>("Cars");
+        }
         Rigidbody2D = GetComponent<Rigidbody2D>();
         CenterOfGravity = transform.Find("CenterOfGravity").gameObject;
 
@@ -143,7 +153,6 @@ public class Car : MonoBehaviour
 
     void Init()
     {
-
         Velocity = Vector2.zero;
         AbsoluteVelocity = 0;
 
@@ -169,6 +178,7 @@ public class Car : MonoBehaviour
             switch (playerIdx)
             {
                 case 1:
+                    // p1 controls
                     key_throttle = KeyCode.UpArrow;
                     key_brake = KeyCode.DownArrow;
                     key_ebrake = KeyCode.RightShift;
@@ -176,8 +186,11 @@ public class Car : MonoBehaviour
                     key_turn_right = KeyCode.RightArrow;
                     key_activate_mine = KeyCode.RightControl;
                     key_activate_speed_boost = KeyCode.Return;
+                    // p1 body image
+                    bodyImage.GetComponent<SpriteRenderer>().sprite = carSprites[PlayerPrefs.GetInt("p1CarIdx")];
                     break;
                 case 2:
+                    // p2 controls
                     key_throttle = KeyCode.W;
                     key_brake = KeyCode.S;
                     key_ebrake = KeyCode.LeftShift;
@@ -185,6 +198,8 @@ public class Car : MonoBehaviour
                     key_turn_right = KeyCode.D;
                     key_activate_mine = KeyCode.LeftControl;
                     key_activate_speed_boost = KeyCode.LeftAlt;
+                    // p2 body image
+                    bodyImage.GetComponent<SpriteRenderer>().sprite = carSprites[PlayerPrefs.GetInt("p2CarIdx")];
                     break;
                     // case 3: // TODO: controller support (player 3 + 4)
             }

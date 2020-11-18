@@ -1,9 +1,12 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PrepareMenu : MonoBehaviour
 {
+    public TextMeshProUGUI p1InputField, p2InputField;
+
     public TextMeshProUGUI selectedLapsText;
 
     public Image car1, car2;
@@ -75,6 +78,23 @@ public class PrepareMenu : MonoBehaviour
         }
         if (car2Idx == car1Idx) prevCarP2();
         car2.sprite = carSprites[car2Idx];
+    }
+
+    public void OnRaceBtnClick()
+    {
+        // persist names
+        PlayerPrefs.SetString("p1Name", p1InputField.text.Length == 0 ? "Player1" : p1InputField.text);
+        PlayerPrefs.SetString("p2Name", p2InputField.text.Length == 0 ? "Player2" : p2InputField.text);
+        // persist selected names
+        PlayerPrefs.SetInt("p1CarIdx", car1Idx);
+        PlayerPrefs.SetInt("p2CarIdx", car2Idx);
+        // persist selected map
+        PlayerPrefs.SetInt("map", 0);
+        // persist round count
+        PlayerPrefs.SetInt("rounds", int.Parse(selectedLapsText.text));
+        print(PlayerPrefs.GetInt("rounds"));
+        // load the map
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

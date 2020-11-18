@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPlayerControlled: 1
+  bodyImage: {fileID: 3885832059064980802}
   CGHeight: 0.55
   InertiaScale: 1
   BrakePower: 13000
@@ -941,7 +942,7 @@ GameObject:
   - component: {fileID: 2323833833158010424}
   - component: {fileID: 4802686828685410730}
   m_Layer: 0
-  m_Name: Texture
+  m_Name: BodyImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

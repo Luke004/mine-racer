@@ -3651,11 +3651,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1222037085}
+      objectReference: {fileID: 1465234858}
     - target: {fileID: 1342559355355133334, guid: 81d7473aa159141468db2fb470ae1e03,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playGame
+      value: OnRaceBtnClick
       objectReference: {fileID: 0}
     - target: {fileID: 1342559355355133334, guid: 81d7473aa159141468db2fb470ae1e03,
         type: 3}
@@ -4032,6 +4032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3157e07ac52e994689c11ad9c41c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p1InputField: {fileID: 635474483}
+  p2InputField: {fileID: 474602945}
   selectedLapsText: {fileID: 1640255238}
   car1: {fileID: 1478148579}
   car2: {fileID: 208112958}
