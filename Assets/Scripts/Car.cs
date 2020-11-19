@@ -135,7 +135,6 @@ public class Car : MonoBehaviour
 
         void Awake()
     {
-        print("awake");
         if(carSprites == null)
         {
             carSprites = Resources.LoadAll<Sprite>("Cars");
@@ -491,7 +490,7 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 9)        // 9 = item layer
+        if (other.gameObject.layer == 9)        // = item
         {
             switch (other.gameObject.tag)
             {
@@ -509,6 +508,14 @@ public class Car : MonoBehaviour
                 if (other.gameObject != null)
                     other.gameObject.SetActive(true);
             });
+        }
+        else if (other.gameObject.layer == 10)    // = finish line
+        {
+            TrackControl.notifyFinishCrossed(playerID);
+        }
+        else if (other.gameObject.layer == 11)    // = checkpoint
+        {
+            TrackControl.notifyCheckpointCrossed(playerID, other.gameObject.name);
         }
 
 
