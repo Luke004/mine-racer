@@ -85,14 +85,13 @@ public class PrepareMenu : MonoBehaviour
         // persist names
         PlayerPrefs.SetString("p1Name", p1InputField.text.Length == 0 ? "Player1" : p1InputField.text);
         PlayerPrefs.SetString("p2Name", p2InputField.text.Length == 0 ? "Player2" : p2InputField.text);
-        // persist selected names
+        // persist selected cars
         PlayerPrefs.SetInt("p1CarIdx", car1Idx);
         PlayerPrefs.SetInt("p2CarIdx", car2Idx);
         // persist selected map
         PlayerPrefs.SetInt("map", 0);
         // persist round count
         PlayerPrefs.SetInt("rounds", int.Parse(selectedLapsText.text));
-        print(PlayerPrefs.GetInt("rounds"));
         // load the map
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
