@@ -13,6 +13,8 @@ public class PrepareMenu : MonoBehaviour
     int car1Idx, car2Idx;
     Sprite[] carSprites;
 
+    public static bool isReturningFromGame;
+
     void Start()
     {
         carSprites = Resources.LoadAll<Sprite>("Cars");
@@ -83,8 +85,8 @@ public class PrepareMenu : MonoBehaviour
     public void OnRaceBtnClick()
     {
         // persist names
-        PlayerPrefs.SetString("p1Name", p1InputField.text.Length == 0 ? "Player1" : p1InputField.text);
-        PlayerPrefs.SetString("p2Name", p2InputField.text.Length == 0 ? "Player2" : p2InputField.text);
+        PlayerPrefs.SetString("p1Name", p1InputField.text.Length == 1 ? "Player1" : p1InputField.text);
+        PlayerPrefs.SetString("p2Name", p2InputField.text.Length == 1 ? "Player2" : p2InputField.text);
         // persist selected cars
         PlayerPrefs.SetInt("p1CarIdx", car1Idx);
         PlayerPrefs.SetInt("p2CarIdx", car2Idx);
@@ -92,8 +94,12 @@ public class PrepareMenu : MonoBehaviour
         PlayerPrefs.SetInt("map", 0);
         // persist round count
         PlayerPrefs.SetInt("rounds", int.Parse(selectedLapsText.text));
+        // save that we will be returning from a game
+        isReturningFromGame = true;
+
         // load the map
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
 }

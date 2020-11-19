@@ -7,6 +7,8 @@ public class Car : MonoBehaviour
     [SerializeField]
     bool IsPlayerControlled = false;
 
+    private TrackControl trackControl;
+
     [SerializeField]
     GameObject bodyImage;
 
@@ -139,6 +141,8 @@ public class Car : MonoBehaviour
         {
             carSprites = Resources.LoadAll<Sprite>("Cars");
         }
+        trackControl = GameObject.Find("Track").GetComponent<TrackControl>();
+
         Rigidbody2D = GetComponent<Rigidbody2D>();
         CenterOfGravity = transform.Find("CenterOfGravity").gameObject;
 
@@ -511,13 +515,12 @@ public class Car : MonoBehaviour
         }
         else if (other.gameObject.layer == 10)    // = finish line
         {
-            TrackControl.notifyFinishCrossed(playerID);
+            trackControl.notifyFinishCrossed(playerID);
         }
         else if (other.gameObject.layer == 11)    // = checkpoint
         {
-            TrackControl.notifyCheckpointCrossed(playerID, other.gameObject.name);
+            trackControl.notifyCheckpointCrossed(playerID, other.gameObject.name);
         }
-
 
     }
 
