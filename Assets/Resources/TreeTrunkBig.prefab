@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1553385507945563345
+--- !u!1001 &7830863815174652082
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -77,16 +77,6 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1200
       objectReference: {fileID: 0}
-    - target: {fileID: 7990771147155089020, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7990771147155089020, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
       propertyPath: m_RootOrder
@@ -95,27 +85,27 @@ PrefabInstance:
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.43819758
       objectReference: {fileID: 0}
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.8988787
       objectReference: {fileID: 0}
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 411.978
       objectReference: {fileID: 0}
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.299995
+      value: 14.48
       objectReference: {fileID: 0}
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.799999
+      value: -78.71
       objectReference: {fileID: 0}
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
@@ -130,12 +120,17 @@ PrefabInstance:
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 3.5064008
       objectReference: {fileID: 0}
     - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 2.796924
+      objectReference: {fileID: 0}
+    - target: {fileID: 7990771147155089023, guid: e4fafd3bcbbf378489d3e9119f1d3a48,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.84936
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4fafd3bcbbf378489d3e9119f1d3a48, type: 3}

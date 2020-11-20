@@ -1,6 +1,8 @@
 ﻿using TMPro;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TrackControl : MonoBehaviour
@@ -20,7 +22,10 @@ public class TrackControl : MonoBehaviour
     private static int checkpoint_amount, round_amount;
     private static Dictionary<int, int> checkpointTracker;
 
-    const int SEC_BEFORE_START = 3;
+    public int countdownTime;
+    public TextMeshProUGUI countdownDisplay;
+
+    public static bool hasStarted;
 
     void Start()
     {
@@ -31,6 +36,22 @@ public class TrackControl : MonoBehaviour
         p2LapsText.text = "1 / " + round_amount;
         p1LapCounter = 1;
         p2LapCounter = 1;
+        // start the countdown to race begin
+        StartCoroutine(CountdownToStart());
+    }
+
+    IEnumerator CountdownToStart()
+    {
+        while (countdownTime > 0)
+        {
+            countdownDisplay.text = countdownTime.ToString();
+            yield return new WaitForSeconds(1f);
+            countdownTime--;
+        }
+        countdownDisplay.text = "RACE!";
+        yield return new WaitForSeconds(1f);
+        hasStarted = true;
+        countdownDisplay.gameObject.SetActive(false);
     }
 
     public void notifyCheckpointCrossed(int carIdx, string checkpointName)
@@ -65,7 +86,7 @@ public class TrackControl : MonoBehaviour
         
     }
 
-    public void notifyFinishCrossed(int carIdx)
+    public void notifyFinishCrossed(int carIdx, Color color)
     {
         if (checkpointTracker.TryGetValue(carIdx, out int value))
         {
@@ -81,6 +102,7 @@ public class TrackControl : MonoBehaviour
                         // p1 has won
                         winnerScreen.SetActive(true);
                         string winText = PlayerPrefs.GetString("p1Name") + " has won!";
+                        winnerScreen.transform.GetChild(0).GetComponent<Image>().color = color;
                         winnerScreen.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = winText;
                         Waiter.Wait(7, () =>
                         {
@@ -100,6 +122,7 @@ public class TrackControl : MonoBehaviour
                         // p2 has won
                         winnerScreen.SetActive(true);
                         string winText = PlayerPrefs.GetString("p2Name") + " has won!";
+                        winnerScreen.transform.GetChild(0).GetComponent<Image>().color = color;
                         winnerScreen.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = winText;
                         Waiter.Wait(7, () =>
                         {

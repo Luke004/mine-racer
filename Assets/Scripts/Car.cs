@@ -134,6 +134,7 @@ public class Car : MonoBehaviour
     private static readonly int ITEM_SIZE = 4;
 
     private static Sprite[] carSprites;
+    private int spriteIdx;
 
         void Awake()
     {
@@ -190,7 +191,8 @@ public class Car : MonoBehaviour
                     key_activate_mine = KeyCode.RightControl;
                     key_activate_speed_boost = KeyCode.Return;
                     // p1 body image
-                    bodyImage.GetComponent<SpriteRenderer>().sprite = carSprites[PlayerPrefs.GetInt("p1CarIdx")];
+                    spriteIdx = PlayerPrefs.GetInt("p1CarIdx");
+                    bodyImage.GetComponent<SpriteRenderer>().sprite = carSprites[spriteIdx];
                     break;
                 case 2:
                     // p2 controls
@@ -202,7 +204,8 @@ public class Car : MonoBehaviour
                     key_activate_mine = KeyCode.LeftControl;
                     key_activate_speed_boost = KeyCode.LeftAlt;
                     // p2 body image
-                    bodyImage.GetComponent<SpriteRenderer>().sprite = carSprites[PlayerPrefs.GetInt("p2CarIdx")];
+                    spriteIdx = PlayerPrefs.GetInt("p2CarIdx");
+                    bodyImage.GetComponent<SpriteRenderer>().sprite = carSprites[spriteIdx];
                     break;
                     // case 3: // TODO: controller support (player 3 + 4)
             }
@@ -227,6 +230,7 @@ public class Car : MonoBehaviour
 
         if (IsPlayerControlled)
         {
+            if (!TrackControl.hasStarted) return;
 
             // Handle Input
             Throttle = 0;
@@ -515,7 +519,7 @@ public class Car : MonoBehaviour
         }
         else if (other.gameObject.layer == 10)    // = finish line
         {
-            trackControl.notifyFinishCrossed(playerID);
+            trackControl.notifyFinishCrossed(playerID, getCarColorBySprite(spriteIdx));
         }
         else if (other.gameObject.layer == 11)    // = checkpoint
         {
@@ -577,6 +581,24 @@ public class Car : MonoBehaviour
         //float activeVelocity = Mathf.Min(AbsoluteVelocity, 250.0f);
         float steer = steerInput * (1.0f - (AbsoluteVelocity / SpeedSteerCorrection));
         return steer;
+    }
+
+    private static Color32 getCarColorBySprite(int spriteIdx)
+    {
+        switch (spriteIdx)
+        {
+            case 0: // YELLOW
+                return new Color32(255, 217, 68, 100);
+            case 1: // BLUE
+                return new Color32(66, 211, 247, 100);
+            case 2: // RED
+                return new Color32(244, 32, 33, 100);
+            case 3: // GREEN
+                return new Color32(55, 200, 55, 100);
+            case 4: // TURQUISE
+                return new Color32(222, 85, 255, 100);
+        }
+        return new Color32(255, 255, 255, 100);
     }
 
     /*
