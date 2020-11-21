@@ -12,7 +12,7 @@ public class Tire : MonoBehaviour
 
     public float Radius = 0.5f;
 
-    float TrailDuration = 60;
+    float TrailDuration = 300;
     bool TrailActive;
     GameObject Skidmark;
 
